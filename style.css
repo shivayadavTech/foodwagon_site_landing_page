@@ -1,0 +1,767 @@
+
+        /* * Senior-level CSS:
+         * - Using CSS variables for maintainable colors.
+         * - Following BEM-like naming for custom classes.
+         * - Prioritizing responsive units (rem, %, vw).
+         * - Ensuring accessibility and visual hierarchy.
+        */
+
+        :root {
+            --primary-color: #F9A826;
+            --primary-dark: #F57F17;
+            --secondary-color: #FF5722; /* For accent elements like badges */
+            --text-dark: #212529;
+            --text-light: #6c757d;
+            --bg-light: #FFFBF2;
+            --border-color: #dee2e6;
+            --success-color: #28a745;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+        }
+        
+        /* Utility */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        .section-header .section-title {
+            margin-bottom: 0;
+            text-align: left;
+        }
+        .section-header .section-title::after {
+             margin: 0.5rem 0 0; /* Align left */
+        }
+        .section-nav-arrows .btn-arrow {
+            background-color: #fff;
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.25rem;
+            line-height: 1;
+            transition: all 0.3s ease;
+        }
+        .section-nav-arrows .btn-arrow:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+
+        /* --- Header / Navbar --- */
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .navbar-brand {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .navbar-brand:hover {
+            color: var(--primary-dark);
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .btn-login {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+        }
+        .btn-login:hover {
+            background-color: var(--primary-dark);
+            color: #fff;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            background-image: linear-gradient(120deg, var(--primary-color) 0%, #FCCB6E 100%);
+            padding: 4rem 0;
+            overflow: hidden; /* Contains the image overflow */
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-image {
+                display: none; /* Hide bowl on mobile for better layout */
+            }
+        }
+
+        .hero-search-box {
+            background-color: #fff;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        /* Custom Tab-like buttons */
+        .hero-search-box .nav-tabs {
+            border-bottom: none;
+            gap: 0.5rem;
+        }
+        .hero-search-box .nav-tabs .nav-link {
+            border: none;
+            border-radius: 0.5rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        .hero-search-box .nav-tabs .nav-link.active {
+            background-color: var(--bg-light);
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .hero-search-box .form-control {
+            border: none;
+            box-shadow: none;
+            font-size: 1rem;
+            padding-left: 0.5rem;
+        }
+        .hero-search-box .form-control:focus {
+            border-color: transparent;
+        }
+        .hero-search-box .input-group-text {
+            border: none;
+            background: none;
+            color: var(--primary-color);
+            font-size: 1.25rem;
+        }
+
+        .btn-find-food {
+            background-color: var(--secondary-color);
+            color: #fff;
+            font-weight: 500;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+        }
+        .btn-find-food:hover {
+            background-color: #E64A19;
+            color: #fff;
+        }
+
+        .hero-image {
+            position: relative;
+            /* Creates the angled effect on the bowl */
+            transform: rotate(-15deg) scale(1.1);
+            right: -10%;
+            top: -10%;
+        }
+
+        /* --- Deals Section --- */
+        .deals-section {
+            padding: 4rem 0;
+            background-color: #fff;
+        }
+
+        .deal-card {
+            border: none;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden; /* Ensures badge stays contained */
+        }
+        .deal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .deal-card .card-img-top {
+            border-radius: 0.75rem 0.75rem 0 0;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+
+        .deal-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: rgba(249, 168, 38, 0.9); /* Primary color with transparency */
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            line-height: 1;
+        }
+        .deal-badge small {
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: block;
+            margin-top: -4px;
+        }
+
+        .deal-card .card-body {
+            padding: 1.5rem;
+        }
+        .deal-card .card-title {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        .deal-card .badge-remaining {
+            background-color: var(--bg-light);
+            color: var(--secondary-color);
+            font-weight: 600;
+            padding: 0.4em 0.8em;
+        }
+
+        /* --- How It Works Section --- */
+        .how-it-works-section {
+            padding: 4rem 0;
+        }
+        .section-title {
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .section-title::after {
+            /* Small underline accent */
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        .step-item {
+            text-align: center;
+        }
+        .step-icon {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 20px rgba(249, 168, 38, 0.2);
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+        .step-item h3 {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        .step-item p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        /* --- Horizontal Scroll Wrapper --- */
+        .horizontal-scroll-wrapper {
+            overflow-x: auto;
+            padding-bottom: 1.5rem; /* Space for scrollbar if it appears */
+        }
+        
+        /* Hide scrollbar for a cleaner look (Lighthouse friendly) */
+        .horizontal-scroll-wrapper::-webkit-scrollbar {
+            display: none; /* Chrome, Safari */
+        }
+        .horizontal-scroll-wrapper {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* --- Popular Items Section --- */
+        .popular-items-section {
+            padding: 4rem 0;
+        }
+        .popular-item-card {
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 280px; /* Fixed width for horizontal scroll items */
+            flex-shrink: 0; /* Prevents items from shrinking */
+        }
+        .popular-item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .popular-item-card .card-img-top {
+            border-radius: 0.75rem 0.75rem 0 0;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+        }
+        .popular-item-card .card-body {
+            padding: 1rem;
+        }
+        .popular-item-card .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .popular-item-card .card-subtitle {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .popular-item-card .price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        .btn-order-now {
+            background-color: var(--secondary-color);
+            color: #fff;
+            font-weight: 500;
+            width: 100%;
+        }
+        .btn-order-now:hover {
+            background-color: #E64A19;
+            color: #fff;
+        }
+
+        /* --- Featured Restaurants Section --- */
+        .featured-restaurants-section {
+            padding: 4rem 0;
+            background-color: #fff; /* White background as per design */
+        }
+
+        .restaurant-card {
+            border: none;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden; /* Important for badges */
+        }
+        .restaurant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .restaurant-card .card-img-wrapper {
+            position: relative;
+        }
+
+        .restaurant-card .card-img-top {
+            border-radius: 0.75rem 0.75rem 0 0;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+        }
+        
+        .badge-discount {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: var(--secondary-color);
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.3em 0.6em;
+            border-radius: 0.25rem;
+        }
+        .badge-fast {
+            position: absolute;
+            top: 1rem;
+            right: 1rem; /* Aligned to the right */
+            background-color: var(--primary-color);
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.3em 0.6em;
+            border-radius: 0.25rem;
+        }
+        .restaurant-logo {
+            position: absolute;
+            bottom: -15px; /* Overlap effect */
+            left: 1rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 0.5rem;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+        
+        .restaurant-card .card-body {
+            padding: 1rem;
+            padding-top: 1.5rem; /* Extra space for the overlapped logo */
+        }
+        .restaurant-card .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .rating {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        .rating .bi-star-fill {
+            color: var(--primary-color);
+            font-size: 0.8rem;
+        }
+        .status {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .status-open {
+            color: var(--success-color); /* Green */
+        }
+        .status-closed {
+            color: var(--secondary-color); /* Orange/Red */
+        }
+        
+        /* View All Button */
+        .btn-view-all {
+            background-color: var(--primary-color);
+            color: #fff;
+            font-weight: 500;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+        }
+        .btn-view-all:hover {
+            background-color: var(--primary-dark);
+            color: #fff;
+        }
+
+        /* --- Search By Food Section --- */
+        .search-by-food-section {
+            padding: 4rem 0;
+        }
+        .food-category-card {
+            width: 150px; /* Fixed width for circular items */
+            flex-shrink: 0;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .food-category-card:hover {
+            transform: scale(1.05);
+        }
+        .food-category-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 3px solid #fff;
+        }
+        .food-category-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* --- Features Banner Section --- */
+        .features-banner-section {
+            padding: 0 0 4rem 0; /* Padding below only */
+        }
+        .features-banner-content {
+            background-color: #fff;
+            border-radius: 1rem;
+            padding: 2.5rem 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .feature-item .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            background-color: var(--bg-light);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .feature-item h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--text-dark);
+        }
+
+        /* --- Install App Section --- */
+        .install-app-section {
+            background-image: linear-gradient(120deg, var(--primary-color) 0%, #FCCB6E 100%);
+            padding: 4rem 0 0 0; /* Padding top, no padding bottom */
+            overflow: hidden;
+            position: relative;
+        }
+        .install-app-section .container {
+            position: relative;
+            z-index: 2;
+        }
+        .install-app-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .install-app-content p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+        }
+        .app-download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #fff;
+            color: var(--text-dark);
+            border-radius: 0.5rem;
+            padding: 0.5rem 1.5rem;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+        .app-download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .app-download-btn i {
+            font-size: 2rem;
+            margin-right: 0.75rem;
+        }
+        .app-download-btn .btn-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .app-download-btn .btn-text small {
+            font-size: 0.75rem;
+            line-height: 1;
+        }
+        .app-download-btn .btn-text strong {
+            font-size: 1rem;
+            line-height: 1.2;
+        }
+        .install-app-images {
+            position: relative;
+            bottom: -4px; /* Sits on the bottom line */
+        }
+        .install-app-images img {
+            max-width: 280px;
+            height: auto;
+        }
+        /* Overlap effect */
+        .install-app-images .phone-2 {
+            position: relative;
+            left: -80px;
+        }
+
+        /* --- NEW: Promo Sections --- */
+        .promo-section {
+            padding: 4rem 0;
+            background-color: var(--bg-light);
+        }
+        .promo-section.bg-white {
+             background-color: #fff;
+        }
+        .promo-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        .promo-content h2 span {
+            color: var(--primary-color);
+        }
+        .promo-content p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        .btn-proceed {
+            background-color: var(--primary-color);
+            color: #fff;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .btn-proceed:hover {
+            background-color: var(--primary-dark);
+            color: #fff;
+        }
+        .promo-image {
+            border-radius: 0.75rem;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* --- NEW: CTA Banner Section --- */
+        .cta-banner-section {
+            padding: 4rem 0;
+            background-image: linear-gradient(120deg, var(--primary-color) 0%, #FCCB6E 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .cta-banner-section .container {
+            position: relative;
+            z-index: 2;
+        }
+        .cta-banner-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        /* Button color from design */
+        .cta-banner-section .btn-proceed {
+            background-color: var(--secondary-color);
+        }
+        .cta-banner-section .btn-proceed:hover {
+            background-color: #E64A19;
+        }
+        /* Decorative images */
+        .cta-banner-img {
+            position: absolute;
+            z-index: 1;
+            opacity: 0.3;
+            max-width: 250px;
+        }
+        .cta-banner-img-left {
+            left: -50px;
+            bottom: -50px;
+            transform: rotate(15deg);
+        }
+        .cta-banner-img-right {
+            right: -50px;
+            top: -50px;
+            transform: rotate(-15deg);
+        }
+        @media (max-width: 768px) {
+            .cta-banner-img {
+                display: none; /* Hide on mobile */
+            }
+        }
+
+        /* --- NEW: Main Footer --- */
+        .main-footer {
+            background-color: var(--text-dark);
+            color: var(--text-light);
+            padding-top: 4rem;
+        }
+        .main-footer h5, .main-footer h6 {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .main-footer .footer-top-cities {
+            padding-bottom: 3rem;
+            border-bottom: 1px solid #444;
+        }
+        .main-footer .footer-top-cities ul {
+            padding-left: 0;
+            list-style: none;
+        }
+        .main-footer .footer-top-cities ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            line-height: 2;
+            transition: color 0.3s ease;
+        }
+        .main-footer .footer-top-cities ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .main-footer .footer-links {
+            padding: 3rem 0;
+        }
+        .main-footer .footer-links ul {
+            padding-left: 0;
+            list-style: none;
+        }
+        .main-footer .footer-links ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            line-height: 2;
+        }
+        .main-footer .footer-links ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .main-footer .footer-social-links a {
+            color: var(--text-light);
+            font-size: 1.25rem;
+            margin-right: 1rem;
+            text-decoration: none;
+        }
+        .main-footer .footer-social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .main-footer .footer-newsletter p {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .main-footer .footer-newsletter .form-control {
+            background-color: #444;
+            border: 1px solid #555;
+            color: #fff;
+        }
+        .main-footer .footer-newsletter .form-control::placeholder {
+            color: #aaa;
+        }
+        .main-footer .footer-newsletter .btn-subscribe {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+        }
+        .main-footer .footer-newsletter .btn-subscribe:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .main-footer .footer-bottom {
+            background-color: #111; /* Darker black for bottom bar */
+            color: #aaa;
+            font-size: 0.8rem;
+            padding: 1.5rem 0;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .main-footer .footer-bottom p {
+            margin: 0;
+        }
