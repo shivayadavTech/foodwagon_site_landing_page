@@ -25,6 +25,19 @@
     <link rel="stylesheet"href="style.css">
 </head>
 <body>
+    <!-- ONLOAD POPUP -->
+    <div id="welcome-popup">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">&times;</span>
+            <h2>Welcome to my Portfolio Site</h2>
+            <p>All designs are inspired by <strong> TemplateMonster
+                <a href="https://demo.templatemonster.com/demo/82722.html" target="_blank">(Burgelo Template)</a>
+            <p>Image and graphics credits for <strong><u><a href="https://unsplash.com/">UNSPLASH</a></u></strong> site.</p>
+            <p>Design converted to Code by <strong>SHIVANAND YADAV</strong>.</p>
+            <h2>Disclaimer</h2>
+            <p class="popup-footer-note">The images and graphics are only used for portfolio and educational purposes, not for sale.</p>
+        </div>
+    </div>
 
     <!-- 
       Semantic <header> tag for navigation.
@@ -825,6 +838,43 @@
             </div>
         </div>
     </footer>
+    <script>
+        const popup = document.getElementById('welcome-popup');
+
+        function closePopup() {
+            popup.style.opacity = '0';
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 500);
+        }
+
+        // Auto-close after 10 seconds
+        window.onload = function() {
+            setTimeout(() => {
+                closePopup();
+            }, 10000); 
+        };
+
+
+        // Category switching logic
+        const categories = document.querySelectorAll('.category-item');
+        categories.forEach(item => {
+            item.addEventListener('click', () => {
+                categories.forEach(c => c.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.padding = '10px 0';
+            } else {
+                header.style.padding = '20px 0';
+            }
+        });
+    
+    </script>
 
 
     <!-- Bootstrap 5.3 JS Bundle (for dropdowns, tabs, etc.) -->
