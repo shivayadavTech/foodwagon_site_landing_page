@@ -82,7 +82,7 @@
 
         .popup-footer-note {
             font-size: 12px !important;
-            color: #999 !important;
+            color: #e11b1b !important;
             margin-top: 20px;
             font-style: italic;
         }
@@ -315,7 +315,7 @@
             /* Small underline accent */
             content: '';
             display: block;
-            width: 80px;
+            width: 200px;
             height: 4px;
             background-color: var(--primary-color);
             margin: 0.5rem auto 0;
@@ -394,7 +394,7 @@
             margin-bottom: 0.25rem;
         }
         .popular-item-card .card-subtitle {
-            color: var(--text-light);
+            color:rgba(255, 179, 14, 1);
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
         }
