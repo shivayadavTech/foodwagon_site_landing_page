@@ -9,12 +9,14 @@
     --primary-color: #F9A826;
     --primary-dark: #F57F17;
     --secondary-color: #FF5722;
+    --secondary-bg-color: #f4ad97;
     /* For accent elements like badges */
     --text-dark: #212529;
     --text-light: #6c757d;
     --bg-light: #FFFBF2;
     --border-color: #dee2e6;
     --success-color: #28a745;
+    --success-bg-color: #9ef0b1;
 }
 
 body {
@@ -116,8 +118,8 @@ h6 {
 }
 
 .section-nav-arrows .btn-arrow {
-    background-color: #fff;
-    color: var(--primary-color);
+    background-color: rgba(250, 170, 1, 1);
+    color: var(--bg-light);
     border: 1px solid var(--border-color);
     border-radius: 50%;
     width: 40px;
@@ -125,6 +127,10 @@ h6 {
     font-size: 1.25rem;
     line-height: 1;
     transition: all 0.3s ease;
+}
+.section-nav-arrows a{
+   color: rgba(250, 170, 1, 1);
+    text-decoration: none;
 }
 
 .section-nav-arrows .btn-arrow:hover {
@@ -259,12 +265,12 @@ h6 {
 
 .hero-image {
     position: relative;
-     transform: rotate(-15deg) scale(1.12) translateY(15%);
-    box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+    transform: rotate(-15deg) scale(1.12) translateY(15);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
     right: -20%;
     display: block;
-     
-    }
+
+}
 
 
 
@@ -284,7 +290,7 @@ h6 {
 }
 
 .deal-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-15px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
@@ -296,23 +302,42 @@ h6 {
 
 .deal-badge {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background-color: rgba(249, 168, 38, 0.9);
-    /* Primary color with transparency */
-    color: #fff;
-    font-size: 1.5rem;
+    bottom: 0;
+    left: 0;
+    background-color: #FFB30E;
+    color: #ffffff;
+    padding: 8px 18px 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    border-top-right-radius: 45px;
+
+}
+
+.discount-value {
+    font-size: 55px;
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -2px;
+}
+
+.discount-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.symbol {
+    font-size: 26px;
     font-weight: 700;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.5rem;
     line-height: 1;
 }
 
-.deal-badge small {
-    font-size: 0.8rem;
+.text {
+    font-size: 18px;
     font-weight: 500;
-    display: block;
-    margin-top: -4px;
+    line-height: 0.8;
 }
 
 .deal-card .card-body {
@@ -326,7 +351,7 @@ h6 {
 }
 
 .deal-card .badge-remaining {
-    background-color: var(--bg-light);
+    background-color: rgb(243, 205, 205);
     color: var(--secondary-color);
     font-weight: 600;
     padding: 0.4em 0.8em;
@@ -415,7 +440,7 @@ h6 {
     border: 1px solid var(--border-color);
     border-radius: 0.75rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 280px;
+    width: 240px;
     /* Fixed width for horizontal scroll items */
     flex-shrink: 0;
     /* Prevents items from shrinking */
@@ -565,11 +590,19 @@ h6 {
 
 .status-open {
     color: var(--success-color);
+    background-color: var(--success-bg-color);
+    border-radius: 1rem;
+    padding: 0.25rem 0.75rem;
+    display: inline;
     /* Green */
 }
 
 .status-closed {
     color: var(--secondary-color);
+    background-color: var(--secondary-bg-color);
+    border-radius: 1rem;
+    padding: 0.25rem 0.75rem;
+    display: inline;
     /* Orange/Red */
 }
 
